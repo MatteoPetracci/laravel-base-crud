@@ -26,7 +26,7 @@ class CameraController extends Controller
      */
     public function create()
     {
-        //
+        return view('cameras.create');
     }
 
     /**
@@ -37,7 +37,16 @@ class CameraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // dd($request->all());
+
+        $data = $request->all();
+        $camera = new Camera;
+        $camera->model = $data['model'];
+        $camera->resolution = $data['resolution'];  
+        $camera->price = $data['price'];  
+        $camera->memory = $data['memory'];  
+
     }
 
     /**

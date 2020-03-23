@@ -8,10 +8,13 @@
 </head>
 <body>
     <form action="{{route('cameras.store')}}" method="post">
-    @csrf
-    
-    @method('POST')
-    
+        @csrf
+        <input type="text" name="model" id="">
+        <input type="text" name="resolution" id="">
+        <input type="text" name="price" id="">
+        <input type="text" name="memory" id="">
+        <button type="submit">Save</button>
+        @method('POST')
     </form>
 </body>
 </html>

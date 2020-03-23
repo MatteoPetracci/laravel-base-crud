@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Camera;
+
 
 class CameraController extends Controller
 {
@@ -13,7 +15,8 @@ class CameraController extends Controller
      */
     public function index()
     {
-        //
+        $cameras = Camera::all();
+        dd($cameras);
     }
 
     /**

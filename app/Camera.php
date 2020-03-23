@@ -11,5 +11,5 @@ class Camera extends Model
         'resolution',
         'price',
         'memory'
-    ]
+    ];
 }

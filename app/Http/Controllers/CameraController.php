@@ -46,6 +46,12 @@ class CameraController extends Controller
         $camera->resolution = $data['resolution'];  
         $camera->price = $data['price'];  
         $camera->memory = $data['memory'];  
+        
+        $saveCamera = $camera->save();
+
+        if ($saveCamera) {
+            return redirect()->route('cameras.index');
+        }
 
     }
 

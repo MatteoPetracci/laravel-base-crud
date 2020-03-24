@@ -60,8 +60,17 @@ class CameraController extends Controller
         
         $saveCamera = $newCamera->save();
 
+
         if ($saveCamera) {
-            return redirect()->route('cameras.index');
+            
+            // Prendo l'ultimo elemento inserito
+
+            $camera = Camera::orderBy('id','desc')->first();
+
+            //Se chiamo show devo passare l'elemento in compact
+            return redirect()->route('cameras.show', compact('camera'));
+            // return redirect()->route('cameras.index');
+
         } else {
             dd('error save');
         }
@@ -76,10 +85,33 @@ class CameraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    // Passo l'oggetto come parametro
+    public function show(Camera $camera)
     {
-        //
+
+        if (empty($camera)) {
+            abort('404');
+        }
+
+        return view('cameras.show', compact('camera'));
     }
+    // ***********************************************************
+
+    // public function show($id)
+    // {
+    //     $camera = Camera::find($id);
+
+    //     if (empty($camera)) {
+    //         abort('404');
+    //     }
+
+    //     return view('cameras.show', compact('camera'));
+    // }
+  
+    
+    // ***********************************************************
+
 
     /**
      * Show the form for editing the specified resource.

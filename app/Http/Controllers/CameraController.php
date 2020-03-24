@@ -164,8 +164,10 @@ class CameraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    // Passo l'oggetto come argomento
+    public function destroy(Camera $camera)
     {
-        //
+        $delete = $camera->delete();
+        return view('cameras.index');
     }
 }

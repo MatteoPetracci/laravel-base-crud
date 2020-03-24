@@ -8,6 +8,11 @@
             <li>{{$camera->resolution}}</li>
             <li>{{$camera->price}}</li>
             <li>{{$camera->memory}}</li>
+            <form action="{{route('cameras.destroy', $camera->id)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Delete</button>
+            </form>
         </ul>
     @endforeach
 @endsection

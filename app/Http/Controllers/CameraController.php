@@ -42,17 +42,23 @@ class CameraController extends Controller
         // dd($request->all());
 
         $data = $request->all();
-        $camera = new Camera;
-        $camera->model = $data['model'];
-        $camera->resolution = $data['resolution'];  
-        $camera->price = $data['price'];  
-        $camera->memory = $data['memory'];  
+
+        $newCamera = new Camera;
+        // $newCamera->model = $data['model'];
+        // $newCamera->resolution = $data['resolution'];  
+        // $newCamera->price = $data['price'];  
+        // $newCamera->memory = $data['memory'];  
+        $newCamera->fill($data);
         
-        $saveCamera = $camera->save();
+        $saveCamera = $newCamera->save();
 
         if ($saveCamera) {
             return redirect()->route('cameras.index');
+        } else {
+            dd('error save');
         }
+
+
 
     }
 

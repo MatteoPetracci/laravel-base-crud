@@ -119,7 +119,10 @@ class CameraController extends Controller
      */
     public function edit(Camera $camera)
     {
-        
+        if (empty($camera)) {
+           abort('404');
+        }
+        return view('cameras.edit', compact('camera'));
     }
 
     /**
@@ -131,7 +134,13 @@ class CameraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $camera = Camera::find($id);
+        if (empty($camera)) {
+            abort('404');
+         }
+
+         $data = $request->all();
+         dd($data);
     }
 
     /**

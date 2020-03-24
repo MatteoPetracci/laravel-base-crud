@@ -43,6 +43,14 @@ class CameraController extends Controller
 
         $data = $request->all();
 
+         $request->validate([
+             'model'=>'required|string|max:30',
+             'resolution'=>'required|string|max:10',
+             'price'=>'required|numeric|min:1|max:5000',
+             'memory'=>'required|string|max:30',
+          ]);
+        // dd($request->validate());
+
         $newCamera = new Camera;
         // $newCamera->model = $data['model'];
         // $newCamera->resolution = $data['resolution'];  

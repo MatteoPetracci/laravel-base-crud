@@ -1,5 +1,13 @@
 @extends('layouts.layout')
-
+@if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <body>
     <form action="{{route('cameras.store')}}" method="post">
         @csrf

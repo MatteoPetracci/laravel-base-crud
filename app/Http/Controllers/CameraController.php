@@ -167,7 +167,7 @@ class CameraController extends Controller
     // Passo l'oggetto come argomento
     public function destroy(Camera $camera)
     {
-        $delete = $camera->delete();
+        $camera->delete();
         return view('cameras.index');
     }
 }

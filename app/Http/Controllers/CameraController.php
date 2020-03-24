@@ -16,7 +16,8 @@ class CameraController extends Controller
     public function index()
     {
         $cameras = Camera::all();
-        dd($cameras);
+        // dd($cameras);
+        return view('cameras.index', compact('cameras'));
     }
 
     /**

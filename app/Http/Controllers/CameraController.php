@@ -62,7 +62,7 @@ class CameraController extends Controller
 
 
         if ($saveCamera) {
-            
+
             // Prendo l'ultimo elemento inserito
 
             $camera = Camera::orderBy('id','desc')->first();
@@ -74,8 +74,6 @@ class CameraController extends Controller
         } else {
             dd('error save');
         }
-
-
 
     }
 
@@ -119,9 +117,9 @@ class CameraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Camera $camera)
     {
-        //
+        
     }
 
     /**

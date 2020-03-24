@@ -8,6 +8,12 @@ use App\Camera;
 
 class CameraController extends Controller
 {
+    private $validation = [
+        'model'=>'required|string|max:30',
+        'resolution'=>'required|string|max:10',
+        'price'=>'required|numeric|min:1|max:5000',
+        'memory'=>'required|string|max:30',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -43,12 +49,7 @@ class CameraController extends Controller
 
         $data = $request->all();
 
-         $request->validate([
-             'model'=>'required|string|max:30',
-             'resolution'=>'required|string|max:10',
-             'price'=>'required|numeric|min:1|max:5000',
-             'memory'=>'required|string|max:30',
-          ]);
+         $request->validate($this->validation);
         // dd($request->validate());
 
         $newCamera = new Camera;
@@ -140,7 +141,21 @@ class CameraController extends Controller
          }
 
          $data = $request->all();
-         dd($data);
+        //  dd($data);
+
+         $request->validate($this->validation);
+
+         //Sovrascrive il record a differenza di save che 
+         // creerebbe un nuovo id
+         $updated = $camera->update($data);
+        //  dd($updated);
+        if ($updated) {
+            $camera = Camera::find($id);
+            return redirect()->route('cameras.show', compact('camera'));
+        } else {
+            dd('error UPDATE');
+        }
+
     }
 
     /**

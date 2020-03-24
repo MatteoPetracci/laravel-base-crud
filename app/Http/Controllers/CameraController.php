@@ -168,6 +168,8 @@ class CameraController extends Controller
     public function destroy(Camera $camera)
     {
         $camera->delete();
-        return view('cameras.index');
+        // return view('cameras.index');
+        return redirect()->route('cameras.index');
+
     }
 }
